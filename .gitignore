@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+migrations/
+
+*.pyc
+00*.py
+celerybeat-schedule

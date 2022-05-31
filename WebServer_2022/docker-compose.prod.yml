@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+
+  web:
+    command: ./run_web_prod.sh
+    volumes:
+      - static_volume:/home/proj/web/static
+      - media_volume:/home/proj/web/media
+
+
+  nginx:
+    build: ./nginx
+    env_file:
+      - ../.env
+    ports:
+      - $WEBSERVER_PORT:80
+    volumes:
+      - static_volume:/home/proj/web/static
+      - media_volume:/home/proj/web/media
+    depends_on:
+      - web
+    networks:
+      - main
+    restart: on-failure
+
+volumes:
+    static_volume:
+    media_volume:

@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Favorites</title>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{{ tablestr|safe }}
+{% endif %}
+{% endblock %}
+
+{% block script %}
+{% if user.AvailableList %}
+<script>
+var content_URL = "{% url 'favorite:favorite' %}";
+</script>
+<script src="{% static 'main/js/setinterval.js' %}"></script>
+{% endif %}
+{% endblock %}
+

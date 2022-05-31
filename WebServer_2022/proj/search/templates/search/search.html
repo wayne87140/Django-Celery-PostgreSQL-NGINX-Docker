@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Search</title>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{{ tablestr|safe }}
+{% endif %}
+{% endblock %}
+
+
+{% block script %}
+<script>
+var content_URL = "{% url 'search:search' %}";
+</script>
+<script src="{% static 'main/js/setinterval.js' %}"></script>
+{% endblock %}

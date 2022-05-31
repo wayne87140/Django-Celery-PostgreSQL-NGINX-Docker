@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}<title>Login</title>{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href="{% static 'account/css/login_form.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet"> 
+{% endblock %}
+
+{% block content %}
+<div id='content'>
+  <form method = "post" action="{% url 'account:login' %}" autocomplete="off">
+    {% csrf_token %}
+    <p><input type="text" placeholder='使用者名稱' name="username" size='9' autocomplete="off" autofocus required></p>
+    <p><input type="password" placeholder='密碼' name="password" size='9' autocomplete="off" required></p>
+{% if nextURL %}
+    <p><input type="hidden" name="nextURL", value="{{ nextURL }}"
+{% endif %}
+    <p><input class="btn" type="submit" value="送出"></p>
+  </form>
+</div>
+{% endblock %}

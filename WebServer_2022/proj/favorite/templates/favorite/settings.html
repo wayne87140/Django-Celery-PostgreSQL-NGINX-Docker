@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}<title>Setting</title>{% endblock %}
+{% block css %}
+<link rel='stylesheet' href="{% static 'favorite/css/favorite_form.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet"> 
+{% endblock %}
+{% block content %}
+{% if devicesform %} 
+<form class='favorite' method="post" action="{% url 'favorite:settings' %}">
+  {% csrf_token %}
+  <p id='check'><input type="checkbox" id="checkAll"> Check All</p>
+  {{ devicesform|safe }}
+  <input type="submit" value="送出">
+</form>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'main/js/checkall.js' %}"></script>
+{% endblock %}

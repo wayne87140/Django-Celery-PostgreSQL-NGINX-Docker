@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Plot</title>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="{% url 'search:findplot' %}">
+  {% csrf_token %}
+  <p><label for="start_time">起始時間(Ex: 2020.01.01.23)*: </label>
+  <input type="text" id = "start_time" name="start_time" 
+  onClick="this.setSelectionRange(0, this.value.length)" value="{{start_datehour}}" autofocus required></p>
+  <p><label for="total_hour">終止時間(1~24)*: </label>
+  <input type="number" id = "total_hour" name="total_hour" min="1" max="24" value="1" required></p>
+  <input type="hidden" id="IPorCOM" name="IPorCOM" value='{{IPorCOM}}'>
+  <p><input class="btn" type="submit" value="送出"></p>
+</form>
+
+{% if img %}
+<!--   <img class='plot' src="{{ img.image.url }}"> -->
+  <a href="{{ img.image.url }}">Download chart in PNG format</a>
+  <br>
+  <br>
+  <div class="chart-container" style="position: relative;  margin-left: auto; margin-right: auto;">
+    <!-- set the responsive charts which occupies 80% hight and width of window -->
+    <canvas id="myChart" ></canvas>
+  </div>
+  <br>
+  <br>
+  
+{% else %}
+  很抱歉，主伺服器無相關數據資料。
+{% endif %}
+
+{% endblock %}
+
+
+{% load js %}
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@1.22.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@0.2.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+
+<script>
+const variables_from_DJ = {{ chartjsvariables|js }};
+</script>
+<script src="{% static 'search/js/create_chartjs.js' %}"></script>
+
+{% endblock %}
+
+
+
+

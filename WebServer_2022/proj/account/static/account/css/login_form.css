@@ -1,0 +1,28 @@
+form{
+  margin:0 30% 0 30%;
+  border: 0.1em solid black;
+  border-radius: 8px;
+}
+form p, form input{
+  font-family: 'Noto Sans TC', sans-serif; 
+}
+
+
+form p {
+  text-align:center;  
+  padding : .5em 0 .5em 0;
+
+/*   font-size : 1.5em; */
+}
+
+form input{
+  font-size : 1.5em;
+  border-radius: 8px;
+  background-color: #E0E0E0;
+}
+
+@media screen and (max-width: 780px){
+  form{
+  margin:0 10% 0 10%; 
+  }
+}

@@ -1,0 +1,254 @@
+/* specify class a ====================================== */
+a:visited{
+  color:black;
+}
+
+a:link{
+  color:black;
+}
+
+table{
+	float: left;
+	border-collapse:collapse;
+	text-align: center;
+	border: 0.12em solid black;
+	width: 30%;
+	margin: 1em;
+}
+
+tr{
+	border-bottom: 0.12em solid black;
+}
+
+td{
+	padding: 0;
+}
+
+/* specify class a ====================================== */
+/* td.ad1, td.ad2, td.ad3{ */
+/* 	width:33.3%; */
+/* 	height: 3em; */
+/* } */
+
+td.ad2{
+  width:33.3%;
+/*   height: 3em; */
+  font-size: 1.5em;
+  background-color: rgb(14, 93, 145);
+  color:white;
+}
+
+td.ad3{
+  width:66.7%;
+  height: 3em;
+  font-size: 18px;
+  border-right: 0.1em solid black;
+}
+
+
+/* specify class b ====================================== */
+tr.b1, tr.b2, tr.b3{
+	height: 1.5em;
+}
+
+tr.b1, tr.b2{
+	border-width: 0;
+}
+
+td.bd1_green{
+	background-color: #060;
+	color:white;
+}
+
+td.bd1_red{
+  background-color: #ff1a1a;
+  color:white;
+}
+
+td.bd3_green{
+  color: #060;
+}
+
+td.bd3_red{
+  color: #ff1a1a;
+}
+td.bd4_green{
+	font-size: 2em;
+	font-style: bold;
+	color: #060;
+}
+td.bd4_red{
+  font-size: 2em;
+  font-style: bold;
+  color: #ff1a1a;
+}
+
+/* rgb(33, 148, 149) */
+/* specify class STOP ====================================== */
+tr.c_stoptr{
+	background-color: #00CC00;
+	height: 4.5em;
+}
+
+tr.c_limittr{
+  background-color: #fefe00;
+  height: 4.5em;
+}
+
+tr.c_warntr{
+  background-color: #ff6f04;
+  height: 4.5em;
+}
+
+tr.c_errortr{
+  background-color: #ff1a1a;
+  height: 4.5em;
+}
+
+td.c_stoptd{
+	font-size: 2em;
+	font-style: bold;
+}
+
+/* specify class offline ====================================== */
+tr.offline{
+	height: 9em;
+	background-color: #d9d9d9;
+}
+
+td.offlinetd{
+	font-size: 3em;
+	font-style: bold;
+}
+
+/* specify class c ====================================== */
+tr.c1, tr.c2, tr.c3{
+	height: 1.5em;
+}
+
+tr.c1, tr.c2{
+	border-width: 0;
+}
+
+td.cd1, td.cd2, td.cd3, td.cd5, td.cd6, td.cd7{
+	width: 16%;
+}
+
+td.cd1, td.cd5{
+	font-size: 0.8em;
+}
+
+td.cd1_blue{
+	background-color: #0066ff;
+	color:white;
+}
+
+td.cd1_red{
+  background-color: #ff1a1a;
+  color:white;
+}
+
+td.cd3_blue{
+  color: #0066ff;
+}
+
+td.cd3_red{
+  color: #ff1a1a;
+}
+
+td.cd4_blue{
+	font-size: 2em;
+	font-style: bold;
+	color: #0066ff;
+  border-top: 1px solid black;
+}
+
+td.cd4border_red{
+	border-right: 0.05em solid black;
+	font-style: bold;
+	color: #ff1a1a;	
+}
+
+td.cd4, td.cd8{
+	width: 34%;
+}
+
+td.cd5{
+	background-color:#0066ff;
+	color:white;
+}
+
+td.cd7{
+  color: #0066ff;
+} 
+
+td.cd8{
+	font-style: bold;
+	color: #0066ff;
+}	
+
+/* specify checkbox ====================================== */
+td>input{
+	/* position: absolute; */
+	/* opacity: 0; */
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+}
+
+
+
+
+/* specify media size ====================================== */
+@media screen and (max-width: 3600px){
+	table{
+    margin:1em;
+		width: 30%;
+		
+	}
+	
+	td.cd4border, td.cd8{
+		font-size: 1.3em;
+	}
+}
+
+@media screen and (max-width: 960px){
+	table{
+		margin:2em;
+		width:40%;
+	}
+	
+	td.cd4border, td.cd8{
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width: 640px){
+	table{
+		margin:3em;
+		width:80%;
+	}
+	
+	td.cd4border, td.cd8{
+		font-size: 1.8em;
+	}
+}
+
+@media screen and (max-width: 450px){
+  table{
+    margin:3em;
+  }  
+
+	td.cd4border, td.cd8{
+		font-size: 2em;
+	}
+}
+
+@media screen and (max-width: 380px){
+	td.cd4border, td.cd8{
+		font-size: 1em;
+	}
+}
+.clear{
+	clear:both;
+}

@@ -1,0 +1,45 @@
+nav{
+	margin:10px 0px 50px 0px;
+	/* padding-top:0; */
+}
+
+nav ul{
+	margin:0;
+	background-color:rgb(32, 148, 148);
+	padding-left:0;
+}
+
+nav li{
+	display:inline-block;
+	border: none;
+}
+
+nav li a{
+	display:block;
+	color:white;
+	text-align:center;
+	text-decoration:none;
+	padding:0.3em 0.5em;
+	font-size:1.875rem;
+	width:200px;
+	border: none;
+}
+
+
+@media screen and (max-width: 830px){
+  nav li a{
+    width:100%;
+  }	
+}
+
+@media screen and (max-width: 650px){
+  nav li{
+    width:100%;
+  } 
+}
+nav a:hover,
+nav a:hover::after,
+nav a:focus,
+nav a:focus::after {
+  background: rgb(19, 94, 93);
+}
