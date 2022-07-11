@@ -16,18 +16,27 @@ This project is a real-time online monitoring website which was built on Django 
 There is a demo video on <a href='https://youtu.be/M3OLgtNlyEE'>youtube</a>.
 
 * log in
-
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/log%20in.PNG" width="600">
+</p>
 
 * main
 
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/main.PNG" width="600">
+</p>
 
 * RWD
 
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/RWD.PNG" width="600">
+</p>
 
 * ChartJS
 
-
-
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/ChartJS.PNG" width="600">
+</p>
 
 ---
 ## Installation
