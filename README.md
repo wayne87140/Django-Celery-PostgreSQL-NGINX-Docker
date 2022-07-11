@@ -1,4 +1,4 @@
-# Django + Celery + PostgreSQL + NGINX + Docker
+# git remote add origin https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker.git
 
 This project is a real-time online monitoring website which was built on Django and running on NGINX using Docker. It displays the information of all the devices derived from a server built by LabVIEW. There are some features about this website.
 
@@ -13,7 +13,7 @@ This project is a real-time online monitoring website which was built on Django 
 
 ---
 ## Demo video(youtube) and photo preview
-There is a demo video on <a href='https://youtu.be/Dcex47DQm7w'>youtube</a>.
+There is a demo video on <a href='https://youtu.be/M3OLgtNlyEE'>youtube</a>.
 
 * log in pic
 * main
