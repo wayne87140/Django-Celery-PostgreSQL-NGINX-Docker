@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'djflakdjfajsdfioioejeiouafwru9833489ru348r23ru9pu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -183,4 +183,9 @@ CELERYBEAT_SCHEDULE = {
     },           
 }
 
+
+# # PlotFile's path
+# settings_dir = os.path.dirname(__file__)
+# PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+# PLOTFILES_FOLDER = os.path.join(PROJECT_ROOT, 'PlotFiles/')
 

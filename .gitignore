@@ -1,6 +1,8 @@
 __pycache__/
 .vscode/
 migrations/
+media/images/
+backupMD/
 
 *.pyc
 00*.py

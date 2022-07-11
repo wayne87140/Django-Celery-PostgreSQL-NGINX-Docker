@@ -1,68 +1,54 @@
-version: '3.5'
+version: '3.8'
 
 services:
   rabbitmq:
     image: rabbitmq:3.7.3
     container_name: rabbitmq
-    hostname: rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: celery
       RABBITMQ_DEFAULT_PASS: password123
       RABBITMQ_DEFAULT_VHOST: my_vhost
     expose:
       - 5672
-    networks:
-      - main
     restart: on-failure
 
 
   postgres:
     container_name: postgres
-    hostname: postgres
     image: postgres
     environment:
       - POSTGRES_DB=model1db
       - POSTGRES_USER=model1
       - POSTGRES_PASSWORD=model1pw
-    networks:
-      - main
     restart: on-failure
     volumes:
        - postgresql-data:/var/lib/postgresql/data/
 
   web:
     build: ./proj
-    command: ./run_web.sh
+    command: ./run_web_prod.sh
     container_name: web
-    hostname: web
     image: web-image
     env_file:
-      - ../.env
+      - .env
     expose:
       - 8000
-    networks:
-      - main
     restart: on-failure
     volumes:
-      - ./proj/:/home/proj/web/
-      - ${LANSERVER_WORKFOLDER}/Data:/home/proj/web/Data/
+      # - ${LANSERVER_WORKFOLDER:?err}:/home/proj/web/Data/
+      # - proj/PlotFiles:/home/proj/web/Data/
+      - static_volume:/home/proj/web/static
+      - media_volume:/home/proj/web/media
     depends_on:
       - postgres
       - rabbitmq
 
   celery_worker:
     build: ./proj
-    hostname: celery_worker
     image: web-image
     container_name: celery_worker
     command: ./run_celery_worker.sh
-    networks:
-      - main
     restart: on-failure
-    env_file:
-      - ../.env
-#    volumes:
-#      - ./proj/:/home/proj/web/
     depends_on:
       - web
       - postgres
@@ -72,23 +58,30 @@ services:
   celery_beat:
     build: ./proj
     container_name: celery_beat
-    hostname: celery_beat
     image: web-image
     command: ./run_celery_beat.sh
     depends_on:
       - web
       - postgres
       - rabbitmq
-    env_file:
-      - ../.env
-#    volumes:
-#      - ./proj/:/home/proj/web/
-    networks:
-      - main
     restart: on-failure
 
-networks:
-  main:
+
+  nginx:
+    build: ./nginx
+    env_file:
+      - .env
+    ports:
+      - ${WEBSERVER_PORT:?err}:80
+    volumes:
+      - static_volume:/home/proj/web/static
+      - media_volume:/home/proj/web/media
+    depends_on:
+      - web
+    restart: on-failure
+
 
 volumes:
   postgresql-data:
+  static_volume:
+  media_volume:

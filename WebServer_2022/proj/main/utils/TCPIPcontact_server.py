@@ -3,11 +3,11 @@ import time
 import struct
 import os
 
-str_LANSERVER_PORT = os.environ.get('LANSERVER_PORT')
-print(str_LANSERVER_PORT, type(str_LANSERVER_PORT), sep='\t')
-PORT = int(str_LANSERVER_PORT)
+# str_LANSERVER_PORT = os.environ.get('LANSERVER_PORT')
+# print(str_LANSERVER_PORT, type(str_LANSERVER_PORT), sep='\t')
+# PORT = int(str_LANSERVER_PORT)
 
-def connect_server(sendMessage, HOST = 'host.docker.internal', PORT=PORT)->str:
+def connect_server(sendMessage, HOST = 'host.docker.internal', PORT=8824)->str:
     # connect to server
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))

@@ -1,55 +1,22 @@
-################### Build
-FROM python:3.6.12 as builder
+FROM python:3.6.12 
 
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-
-
-WORKDIR /usr/src/proj
-
-RUN pip install pip -U
-RUN pip install flake8
-COPY . .
-#RUN flake8 --ignore=E501,F401 ./
-
+ENV PYTHONUNBUFFERED 1 \ PYTHONDONTWRITEBYTECODE 1
 
 COPY ./requirements.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/proj/wheels -r requirements.txt
+RUN pip install pip -U &&\
+    pip install -r requirements.txt
 
-
-################### Final
-FROM python:3.6.12
-
-#ENV C_FORCE_ROOT true
-
-RUN mkdir -p /home/proj
-
-RUN groupadd -r HELLOWORLD &&\
+RUN mkdir -p /home/proj &&\
+    mkdir /home/proj/web &&\
+    mkdir /home/proj/web/static &&\
+    mkdir /home/proj/web/media &&\
+    groupadd -r HELLOWORLD &&\
     useradd -r -g HELLOWORLD -d /home/proj HELLOWORLD 
 
-ENV HOME=/home/proj
-ENV PROJ_HOME=/home/proj/web
-ENV MPLCONFIGDIR /tmp/
-RUN mkdir -p $PROJ_HOME
-RUN mkdir -p $PROJ_HOME/static
-#RUN mkdir -p $PROJ_HOME/media
-WORKDIR $PROJ_HOME
+WORKDIR /home/proj/web
 
-COPY --from=builder /usr/src/proj/wheels /wheels
-COPY --from=builder /usr/src/proj/requirements.txt .
-RUN pip install --no-cache /wheels/*
+COPY . /home/proj/web
 
-COPY . $PROJ_HOME
-
-#COPY ./run_web.sh /home/proj/web/run_web.sh/run_web.sh
-#COPY ./run_celery_worker.sh /home/proj/web/run_celery_worker.sh
-#COPY ./run_celery_beat.sh /home/proj/web/run_celery_beat.sh
-#COPY ./entrypoint.sh /home/proj/web/entrypoint.sh
-
-RUN chmod +x /home/proj/web/entrypoint.sh
-
-RUN chown -R HELLOWORLD:HELLOWORLD $PROJ_HOME
+RUN chown -R HELLOWORLD:HELLOWORLD /home/proj/web
 
 USER HELLOWORLD
-
-ENTRYPOINT ["/home/proj/web/entrypoint.sh"]
