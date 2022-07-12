@@ -5,7 +5,9 @@ A picture is worth a thousand words!
 There would be a comparison between my original and redesigned one. 
 
 The picture below is the original database model. It's also the model that used in the framework now.
->1st picture</br>1st picture</br>1st picture</br>1st picture</br>1st picture
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/DB1.jpg" width="600">
+</p>
 
 When I was programming, the main purpose of using database was storing data, period.
 
@@ -32,7 +34,9 @@ Due to the notes above, I reviewed the design again, and had some viewpoints.
 
 As a result, I redesigned the database model. However, I didn't apply it in this project now.
 
->2nd picture</br>2nd picture</br>2nd picture</br>2nd picture</br>2nd picture
+<p align="center">
+<img src="https://github.com/wayne87140/Django-Celery-PostgreSQL-NGINX-Docker/blob/main/PNG%20files/DB2.jpg" width="600">
+</p>
 
 In this new model, There are more relations and no string repeat twice. 
 I created a bigger table, Device, that with 3 many-to-many relations with User. In real design, they are 3 different tables with foreign keys only. In addition, Device table and Image table have a one-to-many relation.By increasing relations, the efficiency would be enhanced. More codes are on Database operation instead of python. 
